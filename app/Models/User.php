@@ -23,6 +23,11 @@ class User extends Authenticatable
     const UPLOAD_MEMBER = 2;
     const AFFILIATE_MEMBER = 3;
 
+    const STATUS = [
+        'ONGOING' => 0,
+        'BANNED' => 1
+    ];
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -30,24 +35,22 @@ class User extends Authenticatable
         'password',
         'role',
         'phone',
+        'status',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $append = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
 }
