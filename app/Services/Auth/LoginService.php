@@ -18,7 +18,8 @@ class LoginService
     {
         $login_data = $request->only(['email', 'password']);
         if (Auth::attempt(['email' => $login_data['email'], 'password' => $login_data['password']])) {
-            dd(1);
-        } else dd(2);
+            return redirect()->route('index');
+        }
+        return redirect()->back();
     }
 }

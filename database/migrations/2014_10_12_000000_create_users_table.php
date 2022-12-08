@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 class CreateUsersTable extends Migration
 {
@@ -21,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role');
             $table->string('phone')->default(null)->nullable();
+            $table->integer('status')->default(User::STATUS['ONGOING']);
             $table->rememberToken();
             $table->timestamps();
         });
