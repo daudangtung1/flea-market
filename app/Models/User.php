@@ -20,12 +20,27 @@ class User extends Authenticatable
 
     const ADMIN = 0;
     const DOWNLOAD_MEMBER = 1;
-    const UPLOAD_MEMBER = 2;
-    const AFFILIATE_MEMBER = 3;
+    const AFFILIATE_MEMBER = 2;
 
     const STATUS = [
         'ONGOING' => 0,
         'BANNED' => 1
+    ];
+
+    const NOTIFICATION_STATUS = [
+        'NO' => 0,
+        'YES' => 1,
+    ];
+
+    public $arr_status_output = [
+        'ongoing',
+        'banned',
+    ];
+
+    public $arr_role_output = [
+        'admin',
+        'download member',
+        'affiliate member'
     ];
 
     protected $fillable = [
@@ -35,7 +50,8 @@ class User extends Authenticatable
         'password',
         'role',
         'phone',
-        'status',
+        'banned_status',
+        'notification_status',
     ];
 
     protected $hidden = [

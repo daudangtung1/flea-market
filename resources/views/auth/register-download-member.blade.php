@@ -14,8 +14,8 @@
     </div>
     <div>
         <label>メールマガジン</label>
-        <input name="notification_status" type="radio" value="0">
-        <input name="notification_status" type="radio" value="1">
+        Yes:<input name="notification_status" type="radio" value="0">
+        No:<input name="notification_status" type="radio" value="1">
     </div>
     <div>
         <label>パスワード </label>

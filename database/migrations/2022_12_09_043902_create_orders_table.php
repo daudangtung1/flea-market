@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotificationStatusesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateNotificationStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notification_statuses', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('notification_status');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateNotificationStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notification_statuses');
+        Schema::dropIfExists('orders');
     }
 }

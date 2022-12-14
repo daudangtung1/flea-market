@@ -15,6 +15,7 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@mail.test',
             'password' => bcrypt('11111111'),
             'role' => 0,
+            // 'notification_status' => 0,
         ]);
 
         for ($i = 0; $i <= 10; $i++) {
@@ -23,7 +24,8 @@ class UserTableSeeder extends Seeder
                 'last_name' => 'last_' . $i,
                 'email' => 'email_' . $i . '@mail.test',
                 'password' => bcrypt('11111111'),
-                'role' => rand(1, 3),
+                'role' => rand(1, 2),
+                // 'notification_status' => rand(0, 1),
             ]);
         }
     }

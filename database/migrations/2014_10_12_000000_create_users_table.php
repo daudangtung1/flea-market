@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role');
             $table->string('phone')->default(null)->nullable();
-            $table->integer('status')->default(User::STATUS['ONGOING']);
+            $table->integer('notification_status')->default(USER::NOTIFICATION_STATUS['NO']);
+            $table->integer('banned_status')->default(User::STATUS['ONGOING']);
+            $table->dateTime('banned_datetime')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
