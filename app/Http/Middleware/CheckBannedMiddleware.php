@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class UploadMemberMiddleware
+class CheckBannedMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || Auth::user()->role != User::UPLOAD_MEMBER) return abort(404);
+        if (Auth::check() && Auth::user()->status == [User::STATUS['BANNED']]) dd('x');
         return $next($request);
     }
 }

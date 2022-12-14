@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Auth\RegisterService;
+use App\Services\RegisterService;
+use App\Services\LoginService;
 
 class RegisterDownloadMemberController extends Controller
 {
-    public function __construct(RegisterService $register)
+    public function __construct(RegisterService $register, LoginService $login)
     {
         $this->register = $register;
+        $this->login = $login;
     }
     public function index()
     {
@@ -20,6 +22,6 @@ class RegisterDownloadMemberController extends Controller
     public function store(Request $request)
     {
         $auth = $this->register->registerDownloadMember($request);
-        dd($auth);
+        return $this->login->login($auth);
     }
 }
